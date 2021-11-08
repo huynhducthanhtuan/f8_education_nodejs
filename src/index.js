@@ -14,10 +14,10 @@ app.use(morgan('combined'));
 // Template engine
 app.engine('hbs', handlebars({ extname: '.hbs' }));
 app.set('view engine', '.hbs');
-app.set('views', path.join(__dirname, 'resources/views'));
+app.set('views', path.join(__dirname, 'resources', 'views'));
 
 // Config static files
-app.use(express.static(path.join(__dirname, '/resources/public')));
+app.use(express.static(path.join(__dirname, 'resources', 'public')));
 
 // Middleware: xử lý form HTML, JS
 app.use(express.urlencoded({ extended: true }));
@@ -30,7 +30,7 @@ router(app);
 db.connect();
 
 // Listen port
-app.listen(port, () => console.log('Listening at http://localhost:' + port));
+app.listen(port, () => console.log('App is listening at http://localhost:' + port));
 
 
 //#region Notes
