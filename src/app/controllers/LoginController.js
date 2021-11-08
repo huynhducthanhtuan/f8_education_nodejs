@@ -1,12 +1,20 @@
+// Lấy ra thành phần Model
+const Course = require('../models/Course');
 
-// Class constructor
 class LoginController {
-
-    index (req, res) {
-        res.render('login');
+    index(req, res) {
+        Course.find({}, (err, course) => {
+            if (!err) {
+                res.send(course);
+            }
+            else {
+                console.log("Error", err);
+            }
+        });
+        // res.render('login');
     }
-    show (req, res) {
-        res.send('LOGIN PAGE DETAIL');
+    show(req, res) {
+        res.send('LOGIN DETAIL...');
     }
 }
 

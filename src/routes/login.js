@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const loginController = require('../app/controllers/LoginController.js');
+const loginController = require("../app/controllers/LoginController");
 
-router.use('/:slug', loginController.show);
-router.use('/', loginController.index);
+router.use("/:slup", loginController.show);
+router.use("/", loginController.index);
 
 module.exports = router;
