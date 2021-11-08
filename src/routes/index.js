@@ -1,9 +1,13 @@
 const loginRouter = require('./login.js');
-const homeRouter = require('./home.js');
+const siteRouter = require('./site.js');
 
 function route (app) {
+
+    // Trang chính: login
     app.use('/login', loginRouter);
-    app.use('/', homeRouter);
+
+    // Những trang nhỏ khác: search, blog, contact, ...
+    app.use('/', siteRouter);
 }
 
 module.exports = route;

@@ -1,5 +1,5 @@
 
-// Constructor (class)
+// Class constructor
 class LoginController {
 
     index (req, res) {
