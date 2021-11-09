@@ -1,16 +1,12 @@
-<div class='mt-16'>
-    <div class='row'>
-        {{#each courses}}
-            <div class='card' style='width: 18rem;'>
-                <img class='card-img-top' src={{courses.image}} />
-                <div class='card-body'>
-                    <h5 class='card-title'>{{courses.name}}</h5>
-                    <p class='card-text'>{{courses.description}}</p>
-                    <a href='#' class='btn btn-primary'>HỌC NGAY</a>
-                </div>
+<div class='row'>
+    {{#each courses}}
+        <div class='card' style='width: 18rem; margin: 10px'>
+            <img class='card-img-top' src={{this.image}} />
+            <div class='card-body'>
+                <h5 class='card-title'>{{this.name}}</h5>
+                <p class='card-text'>{{this.description}}</p>
+                <a href='#' class='btn btn-primary'>HỌC NGAY</a>
             </div>
-        {{/each}}
-    </div>
+        </div>
+    {{/each}}
 </div>
-
-<span>{{courses}}</span>

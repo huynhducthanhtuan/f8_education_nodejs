@@ -5,21 +5,14 @@ function SiteController() {
     this.index = (req, res, next) => {
         Course.find({})
             .then((courses) => {
-                //courses = courses.map((course) => course.toObject());
-
                 res.render('home', {
-                    courses,
+                    courses: mongoosesToObject(courses),
                 });
             })
             .catch((error) => next(error));
 
-        // Course.findOne({name: 'ReactJS'})
-        //     .then((course) => res.json(course))
-        //     .catch((error) => next(error));
-
-        // Course.findById('61893af06253e1c22842f97f')
-        //     .then((course) => res.json(course))
-        //     .catch((error) => next(error));
+        // Course.findOne({name: 'ReactJS'}) -> promise
+        // Course.findById('61893af06253e1c22842f97f') -> promise
 
         // Phản hồi về json
         // res.json({course: 1, index: 1});
