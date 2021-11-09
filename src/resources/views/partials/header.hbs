@@ -3,7 +3,7 @@
         class='navbar-brand'
         href='#'
         onclick="(() => window.location.href = '/')()"
-    >F8 Blog</a>
+    >F8 Education</a>
     <button
         class='navbar-toggler'
         type='button'
@@ -19,25 +19,13 @@
     <div class='collapse navbar-collapse' id='navbarSupportedContent'>
         <ul class='navbar-nav mr-auto'>
             <li class='nav-item active'>
-                <a
-                    class='nav-link'
-                    onclick="(() => window.location.href = '/')()"
-                >
+                <a class='nav-link' href='/'>
                     Home
                     <span class='sr-only'>(current)</span>
                 </a>
             </li>
             <li class='nav-item'>
-                <a
-                    class='nav-link'
-                    onclick="(() => window.location.href = '/blog')()"
-                >Blog</a>
-            </li>
-            <li class='nav-item'>
-                <a
-                    class='nav-link'
-                    onclick="(() => window.location.href = '/search')()"
-                >Search</a>
+                <a class='nav-link' href='/search'>Search</a>
             </li>
             <li class='nav-item dropdown'>
                 <a
@@ -49,28 +37,22 @@
                     aria-haspopup='true'
                     aria-expanded='false'
                 >
-                    F8 Courses
+                    Courses
                 </a>
                 <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                    <a class='dropdown-item' href='#'>HTML, CSS từ zero đến hero</a>
-                    <a class='dropdown-item' href='#'>Javascript cơ bản</a>
-                    <a class='dropdown-item' href='#'>ReactJS cơ bản</a>
+                    <a class='dropdown-item' href='/courses/html-css'>HTML, CSS
+                        từ zero đến hero</a>
+                    <a class='dropdown-item' href='/courses/reactjs'>ReactJS cơ
+                        bản</a>
+                    <a
+                        class='dropdown-item'
+                        href='/courses/nodejs-and-expressjs'
+                    >NodeJS & ExpressJS</a>
                     <div class='dropdown-divider'></div>
-                    <a class='dropdown-item' href='#'>Các khóa học khác</a>
+                    <a class='dropdown-item' href='/'>Các khóa học khác</a>
                 </div>
             </li>
         </ul>
-        <form class='form-inline my-2 my-lg-0'>
-            <input
-                class='form-control mr-sm-2'
-                type='search'
-                placeholder='Search'
-                aria-label='Search'
-            />
-            <button
-                class='btn btn-outline-success my-2 my-sm-0'
-                type='submit'
-            >Search</button>
-        </form>
+        <a href="/login" class='btn btn-outline-success my-2 my-sm-0'>Login</a>
     </div>
 </nav>

@@ -1,15 +1,15 @@
-<form method='post' action='/'>
+<form>
     <div class='form-group'>
-        <label>Info</label>
-        <input type='text' name='info' class='form-control' />
+        <label>Username</label>
+        <input type='text' name='username' class='form-control' />
     </div>
-    <button type='submit' class='btn btn-primary'>Login</button>
+    <div class='form-group'>
+        <label>Password</label>
+        <input type='password' name='password' class='form-control' />
+    </div>
+    <button class='btn btn-primary'>Login</button>
 </form>
 
-<button onclick="(() => window.location.href = '/')()">
-    -> Home page
-</button>
-
 <script type='text/javascript'>
-    document.title = "F8 Blog | Login";
+    document.title = "F8 Education | Login";
 </script>
