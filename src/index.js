@@ -6,13 +6,13 @@ const handlebars = require('express-handlebars');
 const path = require('path');
 const port = 5000;
 const router = require('./routes');
-const db = require('./config/db');
+const database = require('./config/db');
 
 // HTTP logger
 app.use(morgan('combined'));
 
 // Template engine
-app.engine('hbs', handlebars({ extname: '.hbs' }));
+app.engine('hbs', handlebars({extname: '.hbs'}));
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
@@ -20,18 +20,19 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 app.use(express.static(path.join(__dirname, 'resources', 'public')));
 
 // Middleware: xử lý form HTML, JS
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 // Routing
 router(app);
 
-// Connect Database
-db.connect();
+// Connect database
+database.connect();
 
 // Listen port
-app.listen(port, () => console.log('App is listening at http://localhost:' + port));
-
+app.listen(port, () =>
+    console.log('App is listening at http://localhost:' + port),
+);
 
 //#region Notes
 /*
@@ -64,5 +65,3 @@ app.listen(port, () => console.log('App is listening at http://localhost:' + por
         });
 */
 //#endregion
-
-
