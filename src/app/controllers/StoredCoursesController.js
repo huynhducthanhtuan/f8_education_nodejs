@@ -2,7 +2,7 @@ const Course = require('../models/Course');
 const {mongooseToObject, mongoosesToObject} = require('../../util/mongoose');
 
 class StoredCoursesController {
-    // [GET] /show
+    // [GET] /
     show(req, res, next) {
         Course.find({})
             .then((courses) =>
@@ -21,6 +21,13 @@ class StoredCoursesController {
                     course: mongooseToObject(course),
                 })
             )
+            .catch((error) => next(error));
+    }
+
+    // [PUT] /:id
+    update(req, res, next) {
+        Course.updateOne({_ObjectID: req.params.id}, req.body)
+            .then((course) => res.redirect('/me/stored/courses/'))
             .catch((error) => next(error));
     }
 }

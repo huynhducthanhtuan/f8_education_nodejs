@@ -1,12 +1,12 @@
 <div class='container'>
     <h2 class='mt-4 mb-4'>Cập nhật khoá học</h2>
-    <form method='POST' action='/courses/store'>
+    <form method='POST' action='/me/stored/courses/{{course._id}}?_method=PUT'>
         <div class='form-group'>
-            <label for='name'>Name</label>
+            <label for='name'>Tên</label>
             <input class='form-control' name='name' value='{{course.name}}' />
         </div>
         <div class='form-group'>
-            <label for='description'>Description</label>
+            <label for='description'>Mô tả</label>
             <input
                 class='form-control'
                 name='description'
@@ -14,7 +14,7 @@
             />
         </div>
         <div class='form-group'>
-            <label for='image'>Image URL</label>
+            <label for='image'>Đường dẫn hình ảnh</label>
             <input class='form-control' name='image' value='{{course.image}}' />
         </div>
         <div class='form-group'>
@@ -25,10 +25,10 @@
                 value='{{course.videoId}}'
             />
         </div>
-        <button type='submit' class='btn btn-primary'>Submit</button>
+        <button type='submit' class='btn btn-primary'>CẬP NHẬT</button>
     </form>
 </div>
 
 <script type='text/javascript'>
-    document.title = "F8 Education | Edit course";
+    document.title = "F8 Education | Cập nhật khóa học";
 </script>

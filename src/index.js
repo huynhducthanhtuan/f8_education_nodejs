@@ -7,6 +7,7 @@ const path = require('path');
 const port = 5000;
 const router = require('./routes');
 const database = require('./config/db');
+const methodOverride = require('method-override');
 
 // HTTP logger
 app.use(morgan('combined'));
@@ -30,6 +31,9 @@ app.use(express.static(path.join(__dirname, 'resources', 'public')));
 // Middleware: xử lý form HTML, JS
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
+// override-method expressjs
+app.use(methodOverride('_method'));
 
 // Routing
 router(app);
