@@ -3,8 +3,8 @@ const sitesRoute = require('./sites');
 const coursesRoute = require('./courses');
 
 function route(app) {
-    app.use('/login', loginRoute);
     app.use('/courses', coursesRoute);
+    app.use('/login', loginRoute);
     app.use('/', sitesRoute);
 }
 

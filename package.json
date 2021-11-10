@@ -19,7 +19,8 @@
         "express": "^4.17.1",
         "express-handlebars": "^5.3.4",
         "file-saver": "^2.0.5",
-        "mongoose": "^6.0.12"
+        "mongoose": "^6.0.12",
+        "mongoose-slug-generator": "^1.0.4"
     },
     "devDependencies": {
         "husky": "^7.0.4",
