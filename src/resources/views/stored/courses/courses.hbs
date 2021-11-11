@@ -22,7 +22,14 @@
                             href='/me/stored/courses/{{this._id}}/edit'
                             class='btn btn-primary'
                         >Sửa</a>
-                        <a href='#' class='btn btn-primary'>Xóa</a>
+                        <a
+                            href='#'
+                            class='btn btn-primary'
+                            data-toggle='modal'
+                            data-target='#modal-delete-course'
+                            id='delete-course-btn'
+                            data-id='{{this._id}}'
+                        >Xóa</a>
                     </td>
                 </tr>
             {{/each}}
@@ -30,6 +37,59 @@
     </table>
 </div>
 
+<!-- Modal -->
+<div
+    class='modal fade'
+    id='modal-delete-course'
+    tabindex='-1'
+    role='dialog'
+    aria-labelledby='exampleModalLabel'
+    aria-hidden='true'
+>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title' id='exampleModalLabel'>Xóa khóa học</h5>
+                <button
+                    type='button'
+                    class='close'
+                    data-dismiss='modal'
+                    aria-label='Close'
+                >
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>
+            <div class='modal-body'>
+                Bạn có chắc chắn muốn xóa khóa học này?
+            </div>
+            <div class='modal-footer'>
+                <button
+                    type='button'
+                    class='btn btn-danger'
+                    id='destroy-course-btn'
+                >Xóa bỏ</button>
+                <button
+                    type='button'
+                    class='btn btn-secondary'
+                    data-dismiss='modal'
+                >Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type='text/javascript'>
+
+    // Dùng sự kiện này để sau khi tải xong DOM, sẽ dùng được JQuery
+    document.addEventListener("DOMContentLoaded", function() {
+        $('#modal-delete-course').on('shown.bs.modal', function() {
+            $('#destroy-course-btn').click(function() { 
+                const id = $('#delete-course-btn').data('id'); 
+                alert(id);
+            }) 
+        }); 
+    }); 
+    
+    
     document.title = "F8 Education | Khóa học của tôi";
 </script>
