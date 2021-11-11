@@ -37,7 +37,7 @@
     </table>
 </div>
 
-<!-- Modal -->
+<!-- Modal delete course -->
 <div
     class='modal fade'
     id='modal-delete-course'
@@ -78,18 +78,28 @@
     </div>
 </div>
 
+{{!-- form để submit đến trang delete course --}}
+<form type='submit' method="POST" name='submit-delete-course'></form>
+
 <script type='text/javascript'>
 
-    // Dùng sự kiện này để sau khi tải xong DOM, sẽ dùng được JQuery
-    document.addEventListener("DOMContentLoaded", function() {
-        $('#modal-delete-course').on('shown.bs.modal', function() {
+    // Func-handler sẽ thực thi sau khi DOM được tải xong: giúp chạy được JQuery 
+    document.addEventListener("DOMContentLoaded", function() { 
+
+        // Kích hoạt khi hiển thị boostrap modal
+        $('#modal-delete-course').on('shown.bs.modal', function(e) { 
+            const deleteCourseBtn = $(e.relatedTarget);
+            const courseId = deleteCourseBtn.data('id'); 
+            const formDeleteCourse = document.forms['submit-delete-course']; 
+            
+            // Khi click button "Xóa bỏ" 
             $('#destroy-course-btn').click(function() { 
-                const id = $('#delete-course-btn').data('id'); 
-                alert(id);
-            }) 
-        }); 
-    }); 
-    
+                formDeleteCourse.action = "/me/stored/courses/" + courseId + "/delete?_method=DELETE";
+                formDeleteCourse.submit(); 
+            });
+        });
+    });
+
     
     document.title = "F8 Education | Khóa học của tôi";
 </script>

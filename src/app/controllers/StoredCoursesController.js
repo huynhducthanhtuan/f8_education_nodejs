@@ -24,10 +24,17 @@ class StoredCoursesController {
             .catch((error) => next(error));
     }
 
-    // [PUT] /:id
+    // [PUT] /:id/update
     update(req, res, next) {
-        Course.updateOne({_ObjectID: req.params.id}, req.body)
-            .then((course) => res.redirect('/me/stored/courses/'))
+        Course.updateOne({_id: req.params.id}, req.body)
+            .then((course) => res.redirect('/me/stored/courses'))
+            .catch((error) => next(error));
+    }
+
+    // [DELETE] /:id/delete
+    delete(req, res, next) {
+        Course.deleteOne({_id: req.params.id})
+            .then((course) => res.redirect('back'))
             .catch((error) => next(error));
     }
 }

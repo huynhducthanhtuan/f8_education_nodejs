@@ -1,6 +1,9 @@
 <div class='container'>
     <h2 class='mt-4 mb-4'>Cập nhật khoá học</h2>
-    <form method='POST' action='/me/stored/courses/{{course._id}}?_method=PUT'>
+    <form
+        method='POST'
+        action='/me/stored/courses/{{course._id}}/update?_method=PUT'
+    >
         <div class='form-group'>
             <label for='name'>Tên</label>
             <input class='form-control' name='name' value='{{course.name}}' />
