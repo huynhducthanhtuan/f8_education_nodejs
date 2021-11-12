@@ -7,8 +7,89 @@
         </div>
         <button type='submit' class='btn btn-primary'>Tìm kiếm</button>
     </form>
+</div> 
+
+
+{{!-- $(event.relatedTarget), element.data('whatever') --}}
+{{!-- <table class='table mt-4'>
+    <thead>
+        <tr>
+            <th scope='col'>#</th>
+            <th scope='col'>Name</th>
+            <th scope='col'></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope='row'>1</th>
+            <td>ITEM 1</td>
+            <td>
+                <a
+                    href='#'
+                    class='btn btn-primary'
+                    data-toggle='modal'
+                    data-target='#modal-delete-course'
+                    id='delete-course-btn'
+                >Xóa</a>
+            </td>
+        </tr>
+        <tr>
+            <th scope='row'>2</th>
+            <td>ITEM 2</td>
+            <td>
+                <a
+                    href='#'
+                    class='btn btn-primary'
+                    data-toggle='modal'
+                    {{!-- data-target='#modal-delete-course' --}}
+                    id='delete-course-btn'
+                >Xóa</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div
+    class='modal fade'
+    id='modal-delete-course'
+    tabindex='-1'
+    role='dialog'
+    aria-labelledby='exampleModalLabel'
+    aria-hidden='true'
+>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+            <div class='modal-footer'>
+                <button
+                    type='button'
+                    class='btn btn-danger'
+                    id='destroy-course-btn'
+                >
+                    Xóa bỏ
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<script type='text/javascript'>
-    document.title = "F8 Education | Tìm kiếm";
-</script>
+<script>
+    // Sự kiện kích hoạt sau khi DOM được tải xong, giúp dùng được JQuery
+    document.addEventListener("DOMContentLoaded", () => {
+
+        // Sự kiện kích hoạt sau khi boostrap modal này được tải vào DOM
+        $("#modal-delete-course").on("shown.bs.modal", (event) => { 
+
+            // Lấy ra được element được tác động trước đó để hiển thị modal
+            const deleteCourseBtn = $(event.relatedTarget); 
+            console.log("deleteCourseBtn: ", deleteCourseBtn); 
+
+            // Lấy ra giá trị các thuộc tính data-whatever (JQuery - data('whatever'))
+            console.log(deleteCourseBtn.data('target')); 
+            console.log(deleteCourseBtn.data('toggle')); 
+            
+            // Lấy ra giá trị các thuộc tính data-whatever (JS thuần - dataset.whatever)
+            // console.log(deleteCourseBtn.dataset.target); 
+            // console.log(deleteCourseBtn.dataset.toggle);
+        }); 
+    });
+</script>  --}}

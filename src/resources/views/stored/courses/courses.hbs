@@ -87,8 +87,8 @@
     document.addEventListener("DOMContentLoaded", function() { 
 
         // Kích hoạt khi hiển thị boostrap modal
-        $('#modal-delete-course').on('shown.bs.modal', function(e) { 
-            const deleteCourseBtn = $(e.relatedTarget);
+        $('#modal-delete-course').on('shown.bs.modal', function(event) { 
+            const deleteCourseBtn = $(event.relatedTarget);
             const courseId = deleteCourseBtn.data('id'); 
             const formDeleteCourse = document.forms['submit-delete-course']; 
             
