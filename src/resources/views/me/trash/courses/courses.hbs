@@ -1,0 +1,128 @@
+<div class='container mt-4'>
+    <div
+        style='display: flex; justify-content: space-between; align-items: center'
+    >
+        <h2 class='mt-4'>Thùng rác</h2>
+        <a
+            href='/me/stored/courses'
+            style='font-size: 22px; margin-right: 100px'
+        >Khóa học của tôi</a>
+    </div>
+    <table class='table mt-4'>
+        <thead>
+            <tr>
+                <th scope='col'>#</th>
+                <th scope='col'>Name</th>
+                <th scope='col'>Description</th>
+                <th scope='col'>Slug</th>
+                <th scope='col'></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each courses}}
+                <tr>
+                    <th scope='row'>{{sum @index 1}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.description}}</td>
+                    <td>{{this.slug}}</td>
+                    <td>
+                        <a
+                            href='#'
+                            class='btn btn-primary'
+                            id='restore-course-btn'
+                            data-id='{{this._id}}'
+                        >Khôi phục</a>
+                        <a
+                            href='#'
+                            class='btn btn-primary'
+                            data-toggle='modal'
+                            data-target='#modal-force-destroy-course'
+                            id='destroy-course-btn'
+                            data-id='{{this._id}}'
+                        >Xóa vĩnh viễn</a>
+                    </td>
+                </tr>
+
+            {{else}}
+                <tr class='text-center' style='font-size: 20px'>
+                    <td colspan='5'>Thùng rác trống...</td>
+                </tr>
+
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal force destroy course -->
+<div
+    class='modal fade'
+    id='modal-force-destroy-course'
+    tabindex='-1'
+    role='dialog'
+    aria-labelledby='exampleModalLabel'
+    aria-hidden='true'
+>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title' id='exampleModalLabel'>Xóa khóa học</h5>
+                <button
+                    type='button'
+                    class='close'
+                    data-dismiss='modal'
+                    aria-label='Close'
+                >
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>
+            <div class='modal-body'>
+                Bạn có chắc chắn muốn xóa "vĩnh viễn" khóa học này?
+            </div>
+            <div class='modal-footer'>
+                <button
+                    type='button'
+                    class='btn btn-danger'
+                    id='force-destroy-course-btn'
+                >Xóa vĩnh viễn</button>
+                <button
+                    type='button'
+                    class='btn btn-secondary'
+                    data-dismiss='modal'
+                >Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{! form để submit đến trang restore / force destroy course }}
+<form type='submit' method='POST' name='restore-form'></form>
+<form type='submit' method='POST' name='force-destroy-form'></form>
+
+<script type='text/javascript'>
+
+    document.addEventListener("DOMContentLoaded", (e) => {
+        const restoreForm = document.forms['restore-form'];
+        const forceDestroyForm = document.forms['force-destroy-form'];
+
+        // Khôi phục khoá học
+        $('#restore-course-btn').click(function() {
+            const courseId = $(this).data('id');
+            restoreForm.action = '/me/trash/courses/' + courseId + '/restore?_method=PATCH';
+            restoreForm.submit();
+        })
+
+        // Xóa vĩnh viễn khoá học
+        $('#modal-force-destroy-course').on("shown.bs.modal", (event) => {
+            const forceCourseBtn = $(event.relatedTarget);
+            const courseId = forceCourseBtn.data('id');
+            
+            $('#force-destroy-course-btn').click(() => {
+                forceDestroyForm.action = '/me/trash/courses/' + courseId + '?_method=DELETE';
+                forceDestroyForm.submit();
+            })
+        }) 
+        
+    })
+
+    document.title = "F8 Education | Thùng rác";
+</script>

@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
-// Plugin của mongose, giúp auto generate slug từ field khác trong cùng document (DB)
 const slug = require('mongoose-slug-generator');
-mongoose.plugin(slug);
+const mongooseDelete = require('mongoose-delete');
 
 // Tạo lược đồ Course
 const Course = new Schema(
@@ -13,13 +11,21 @@ const Course = new Schema(
         image: {type: String},
         slug: {type: String, slug: 'name', unique: true},
         videoId: {type: String, required: true},
+        deleted: {type: Boolean, default: false},
     },
     {
         timestamps: true,
     }
 );
 
-// Tạo model Course
-const courseModel = mongoose.model('Course', Course);
+// Plugin giúp auto generate slug từ field khác trong cùng document (DB)
+mongoose.plugin(slug);
 
-module.exports = courseModel;
+// Plugin giúp override những method của mongose
+Course.plugin(mongooseDelete, {
+    deletedAt: true,
+    overrideMethods: 'all',
+});
+
+// Export 1 model Course
+module.exports = mongoose.model('Course', Course);

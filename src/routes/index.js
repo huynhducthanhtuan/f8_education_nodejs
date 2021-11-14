@@ -1,12 +1,12 @@
-const loginRoute = require('./login');
-const sitesRoute = require('./sites');
 const coursesRoute = require('./courses');
-const storedCoursesRoute = require('./storedCourses');
+const loginRoute = require('./login');
+const meRoute = require('./me');
+const sitesRoute = require('./sites');
 
 function route(app) {
-    app.use('/me/stored/courses', storedCoursesRoute);
     app.use('/courses', coursesRoute);
     app.use('/login', loginRoute);
+    app.use('/me', meRoute);
     app.use('/', sitesRoute);
 }
 
