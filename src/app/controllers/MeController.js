@@ -4,9 +4,10 @@ const {mongooseToObject, mongoosesToObject} = require('../../util/mongoose');
 class MeController {
     // [GET] /stored/courses
     showStored(req, res, next) {
-        Course.find({})
-            .then((courses) =>
+        Promise.all([Course.find({}), Course.countDeleted({})])
+            .then(([courses, deletedCount]) =>
                 res.render('me/stored/courses/courses', {
+                    deletedCount,
                     courses: mongoosesToObject(courses),
                 })
             )
@@ -52,7 +53,7 @@ class MeController {
     // [PATCH] /trash/courses/:id/restore
     restore(req, res, next) {
         Course.restore({_id: req.params.id})
-            .then((course) => res.redirect('/me/trash/courses/courses'))
+            .then((course) => res.redirect('back'))
             .catch((error) => next(error));
     }
 

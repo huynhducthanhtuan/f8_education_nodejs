@@ -5,16 +5,16 @@
         <h2 class='mt-4'>Thùng rác</h2>
         <a
             href='/me/stored/courses'
-            style='font-size: 22px; margin-right: 100px'
+            style='font-size: 22px; margin-right: 60px'
         >Khóa học của tôi</a>
     </div>
     <table class='table mt-4'>
         <thead>
             <tr>
                 <th scope='col'>#</th>
-                <th scope='col'>Name</th>
-                <th scope='col'>Description</th>
-                <th scope='col'>Slug</th>
+                <th scope='col'>Tên</th>
+                <th scope='col'>Mô tả</th>
+                <th scope='col'>Thời gian xóa</th>
                 <th scope='col'></th>
             </tr>
         </thead>
@@ -24,7 +24,7 @@
                     <th scope='row'>{{sum @index 1}}</th>
                     <td>{{this.name}}</td>
                     <td>{{this.description}}</td>
-                    <td>{{this.slug}}</td>
+                    <td>{{this.deletedAt}}</td>
                     <td>
                         <a
                             href='#'
