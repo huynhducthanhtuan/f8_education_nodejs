@@ -1,18 +1,31 @@
 <form class='container mt-4' method="POST" action="/courses/handle-form-actions">
-    <div style="display: flex; justify-content: space-between; align-items: center">
+    <div 
+        style="display: flex; justify-content: space-between; align-items: center"
+    >
         <h2 class='mt-2'>Khóa học của tôi</h2>
         <a href="/me/trash/courses" style="font-size: 22px; margin-right: 60px">
             Thùng rác ({{deletedCount}})
         </a>
     </div>
-    <div style="display: flex; align-items: center; float: left; margin: 10px 0 20px 0">
+    <div 
+        style="display: flex; align-items: center; float: left; margin: 10px 0 20px 0"
+    >
         <div style="margin-right: 10px;">
-            <select id="inputState" class="form-control select-course-action" name="action" required>
+            <select 
+                id="inputState" 
+                class="form-control select-course-action" 
+                name="action" 
+                required="required"
+            >
                 <option value="">-- Hành động --</option>
                 <option value="delete">Xóa</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary course-action-btn" disabled="true">Thực hiện</button>
+        <button 
+            type="submit" 
+            class="btn btn-primary course-action-btn" 
+            disabled="disabled"
+        >Thực hiện</button>
     </div>
     <table class='table mt-4'>
         <thead>
@@ -129,7 +142,9 @@
         function handleToggleEnabledActionBtn() {
             const checkboxCourseItemsCheckedLength = $('input[name="courseIds[]"]:checked').length;
             const isEnabled = (checkboxCourseItemsCheckedLength > 0);
-            courseActionBtn.prop('disabled', !isEnabled) 
+
+            // Add-remove property disabled
+            courseActionBtn.attr('disabled', !isEnabled) 
         } 
 
         // Check-uncheck Chọn tất cả
