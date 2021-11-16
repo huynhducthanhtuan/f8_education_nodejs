@@ -1,19 +1,37 @@
-<div class='container mt-4'>
+<form class='container mt-4' method="POST" action="/courses/handle-form-actions">
     <div
         style='display: flex; justify-content: space-between; align-items: center'
     >
-        <h2 class='mt-4'>Thùng rác</h2>
+        <h2 class='mt-2'>Thùng rác</h2>
         <a
             href='/me/stored/courses'
             style='font-size: 22px; margin-right: 60px'
         >Khóa học của tôi</a>
     </div>
+    <div style="display: flex; align-items: center; float: left; margin: 10px 0 20px 0">
+        <div style="margin-right: 10px;">
+            <select id="inputState" class="form-control select-course-action" name="action" required>
+                <option value="">-- Hành động --</option>
+                <option value="restore">Khôi phục</option>
+                <option value="force-destroy">Xóa vĩnh viễn</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary course-action-btn" disabled="true">Thực hiện</button>
+    </div>
     <table class='table mt-4'>
         <thead>
             <tr>
+                <th scope='col'>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="courses-check-all">
+                        <label class="form-check-label" for="courses-check-all">
+                            Chọn tất cả
+                        </label>
+                    </div>
+                </th>
                 <th scope='col'>#</th>
                 <th scope='col'>Tên</th>
-                <th scope='col'>Mô tả</th>
+                <th scope='col'>Slug</th>
                 <th scope='col'>Thời gian xóa</th>
                 <th scope='col'></th>
             </tr>
@@ -21,9 +39,17 @@
         <tbody>
             {{#each courses}}
                 <tr>
+                    <th scope='col'>
+                        <div class="form-check">
+                            <input 
+                                class="form-check-input" type="checkbox" name="courseIds[]" 
+                                value="{{this._id}}" id="checkbox-course-item"
+                            >
+                        </div>
+                    </th>
                     <th scope='row'>{{sum @index 1}}</th>
                     <td>{{this.name}}</td>
-                    <td>{{this.description}}</td>
+                    <td>{{this.slug}}</td>
                     <td>{{this.deletedAt}}</td>
                     <td>
                         <a
@@ -51,7 +77,7 @@
             {{/each}}
         </tbody>
     </table>
-</div>
+</form>
 
 <!-- Modal force destroy course -->
 <div
@@ -103,6 +129,36 @@
     document.addEventListener("DOMContentLoaded", (e) => {
         const restoreForm = document.forms['restore-form'];
         const forceDestroyForm = document.forms['force-destroy-form'];
+        const courseActionBtn = $('.course-action-btn');
+        const coursesCheckAll = $('#courses-check-all');
+        const checkboxCourseItems = $('input[name="courseIds[]"');
+        
+        function handleToggleEnabledActionBtn() {
+            const checkboxCourseItemsCheckedLength = $('input[name="courseIds[]"]:checked').length;
+            const isEnabled = (checkboxCourseItemsCheckedLength > 0);
+            courseActionBtn.prop('disabled', !isEnabled) 
+        } 
+
+        // Check-uncheck Chọn tất cả
+        coursesCheckAll.change(function() {
+            const isChecked = $(this).prop('checked');
+
+            // Check-uncheck tất cả các checkbox course item
+            checkboxCourseItems.prop('checked', isChecked);
+            handleToggleEnabledActionBtn();
+        })
+
+        // checkboxCourseItems changed
+        checkboxCourseItems.change(function() {
+            const checkboxCourseItemsLength = checkboxCourseItems.length;
+            const checkboxCourseItemsCheckedLength = $('input[name="courseIds[]"]:checked').length;
+            const isCheckedAll = (checkboxCourseItemsLength === checkboxCourseItemsCheckedLength);
+            
+            // Check-uncheck Chọn tất cả
+            coursesCheckAll.prop('checked', isCheckedAll);
+            handleToggleEnabledActionBtn();
+        })
+
 
         // Khôi phục khoá học
         $('#restore-course-btn').click(function() {
@@ -121,7 +177,6 @@
                 forceDestroyForm.submit();
             })
         }) 
-        
     })
 
     document.title = "F8 Education | Thùng rác";

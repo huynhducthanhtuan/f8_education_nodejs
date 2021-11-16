@@ -1,8 +1,13 @@
 /* 
   import file scss
 */
-@import "variables";
+@import 'variables';
 
 h1 {
-  color: $red-color;
+    color: $red-color;
+}
+
+
+.select-course-action {
+    width: 200px;
 }

@@ -2,6 +2,33 @@ const Course = require('../models/Course');
 const {mongooseToObject} = require('../../util/mongoose');
 
 class CoursesController {
+    // [POST] /handle-form-actions
+    handleFormActions(req, res, next) {
+        switch (req.body.action) {
+            case 'delete': {
+                Course.delete({_id: {$in: req.body.courseIds}})
+                    .then((courses) => res.redirect('back'))
+                    .catch((error) => next(error));
+                break;
+            }
+            case 'restore': {
+                Course.restore({_id: {$in: req.body.courseIds}})
+                    .then((courses) => res.redirect('back'))
+                    .catch((error) => next(error));
+                break;
+            }
+            case 'force-destroy': {
+                Course.deleteMany({_id: {$in: req.body.courseIds}})
+                    .then((courses) => res.redirect('back'))
+                    .catch((error) => next(error));
+                break;
+            }
+            default: {
+                throw new Error('Invalid action!');
+            }
+        }
+    }
+
     // [GET] /create
     create(req, res, next) {
         res.render('courses/create');
