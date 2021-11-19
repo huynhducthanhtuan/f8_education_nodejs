@@ -39,9 +39,18 @@
                     </div>
                 </th>
                 <th scope='col'>#</th>
-                <th scope='col'>Tên</th>
-                <th scope='col'>Slug</th>
-                <th scope='col'>Thời gian tạo</th>
+                <th scope='col'>
+                    Tên
+                    {{{sortable 'name' _sort}}}
+                </th>
+                <th scope='col'>
+                    Slug
+                    {{{sortable 'slug' _sort}}}
+                </th>
+                <th scope='col'>
+                    Thời gian tạo
+                    {{{sortable 'createdAt' _sort}}}
+                </th>
                 <th scope='col'></th>
             </tr>
         </thead>

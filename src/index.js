@@ -8,6 +8,7 @@ const port = 5000;
 const router = require('./routes');
 const database = require('./config/db');
 const methodOverride = require('method-override');
+const sortMiddleware = require('./app/middlewares/SortMiddleware');
 
 // HTTP logger
 app.use(morgan('combined'));
@@ -19,9 +20,34 @@ app.engine(
         extname: '.hbs',
         helpers: {
             sum: (a, b) => a + b,
+            sortable: (fieldName, _sort) => {
+                const sortType =
+                    fieldName === _sort.column ? _sort.type : 'default';
+
+                const icons = {
+                    default: 'oi oi-elevator',
+                    desc: 'oi oi-sort-descending',
+                    asc: 'oi oi-sort-ascending',
+                };
+                const types = {
+                    default: 'desc',
+                    desc: 'asc',
+                    asc: 'desc',
+                };
+
+                const icon = icons[sortType];
+                const type = types[sortType];
+
+                return `
+                    <a href="?_sort&column=${fieldName}&type=${type}">
+                        <span class="${icon}"></span>
+                    </a>
+                `;
+            },
         },
     })
 );
+
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
@@ -34,6 +60,9 @@ app.use(express.json());
 
 // override-method expressjs
 app.use(methodOverride('_method'));
+
+// Use Middleware
+app.use(sortMiddleware);
 
 // Routing
 router(app);
