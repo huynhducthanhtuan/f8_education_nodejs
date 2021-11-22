@@ -2,10 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const slug = require('mongoose-slug-generator');
 const mongooseDelete = require('mongoose-delete');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 // Tạo lược đồ Course
 const Course = new Schema(
     {
+        _id: {type: Number},
         name: {type: String, required: true},
         description: {type: String},
         image: {type: String},
@@ -14,9 +16,11 @@ const Course = new Schema(
         deleted: {type: Boolean, default: false},
     },
     {
+        _id: false,
         timestamps: true,
     }
 );
+
 
 // Plugin giúp auto generate slug từ field khác trong cùng document (DB)
 mongoose.plugin(slug);
@@ -26,6 +30,10 @@ Course.plugin(mongooseDelete, {
     deletedAt: true,
     overrideMethods: 'all',
 });
+
+// Plugin giúp tự động tăng _id
+Course.plugin(AutoIncrement);
+
 
 // Query helper method
 Course.query.sortable = function (req) {

@@ -6,7 +6,9 @@
         <a
             href='/me/stored/courses'
             style='font-size: 22px; margin-right: 60px'
-        >Khóa học của tôi</a>
+        >
+            Khóa học của tôi ({{availableCoursesCount}})
+        </a>
     </div>
     <div style="display: flex; align-items: center; float: left; margin: 10px 0 20px 0">
         <div style="margin-right: 10px;">
@@ -36,10 +38,22 @@
                         </label>
                     </div>
                 </th>
-                <th scope='col'>#</th>
-                <th scope='col'>Tên</th>
-                <th scope='col'>Slug</th>
-                <th scope='col'>Thời gian xóa</th>
+                <th scope='col'>
+                    ID
+                    {{{sortable '_id' _sort}}}
+                </th>
+                <th scope='col'>
+                    Tên
+                    {{{sortable 'name' _sort}}}
+                </th>
+                <th scope='col'>
+                    Slug
+                    {{{sortable 'slug' _sort}}}
+                </th>
+                <th scope='col'>
+                    Thời gian xóa
+                    {{{sortable 'deletedAt' _sort}}}
+                </th>
                 <th scope='col'></th>
             </tr>
         </thead>
@@ -54,7 +68,7 @@
                             >
                         </div>
                     </th>
-                    <th scope='row'>{{sum @index 1}}</th>
+                    <th scope='row'>{{this._id}}</th>
                     <td>{{this.name}}</td>
                     <td>{{this.slug}}</td>
                     <td>{{this.deletedAt}}</td>

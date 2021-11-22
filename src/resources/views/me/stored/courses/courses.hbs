@@ -4,7 +4,7 @@
     >
         <h2 class='mt-2'>Khóa học của tôi</h2>
         <a href="/me/trash/courses" style="font-size: 22px; margin-right: 60px">
-            Thùng rác ({{deletedCount}})
+            Thùng rác ({{deletedCoursesCount}})
         </a>
     </div>
     <div 
@@ -38,7 +38,10 @@
                         </label>
                     </div>
                 </th>
-                <th scope='col'>#</th>
+                <th scope='col'>
+                    ID
+                    {{{sortable '_id' _sort}}}
+                </th>
                 <th scope='col'>
                     Tên
                     {{{sortable 'name' _sort}}}
@@ -65,7 +68,7 @@
                             >
                         </div>
                     </th>
-                    <th scope='row'>{{sum @index 1}}</th>
+                    <th scope='row'>{{this._id}}</th>
                     <td>{{this.name}}</td>
                     <td>{{this.slug}}</td>
                     <td>{{this.createdAt}}</td>

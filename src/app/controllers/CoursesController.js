@@ -38,8 +38,10 @@ class CoursesController {
     store(req, res, next) {
         // insert a course into document in DB
         const newCourse = new Course(req.body);
-        newCourse.save();
-        res.redirect('/');
+        newCourse
+            .save()
+            .then((course) => res.redirect('/'))
+            .catch((error) => next(error));
     }
 
     // [GET] /:slug
