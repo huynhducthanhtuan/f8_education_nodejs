@@ -1,13 +1,14 @@
 // Import libraries
 const express = require('express');
 const app = express();
+const port = 5000;
+const path = require('path');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
-const path = require('path');
-const port = 5000;
+const methodOverride = require('method-override');
 const router = require('./routes');
 const database = require('./config/db');
-const methodOverride = require('method-override');
+const helpers = require('./helpers/handlebars');
 const sortMiddleware = require('./app/middlewares/SortMiddleware');
 
 // HTTP logger
@@ -18,36 +19,9 @@ app.engine(
     'hbs',
     handlebars({
         extname: '.hbs',
-        helpers: {
-            sum: (a, b) => a + b,
-            sortable: (fieldName, _sort) => {
-                const sortType =
-                    fieldName === _sort.column ? _sort.type : 'default';
-
-                const icons = {
-                    default: 'oi oi-elevator',
-                    desc: 'oi oi-sort-descending',
-                    asc: 'oi oi-sort-ascending',
-                };
-                const types = {
-                    default: 'desc',
-                    desc: 'asc',
-                    asc: 'desc',
-                };
-
-                const icon = icons[sortType];
-                const type = types[sortType];
-
-                return `
-                    <a href="?_sort&column=${fieldName}&type=${type}">
-                        <span class="${icon}"></span>
-                    </a>
-                `;
-            },
-        },
+        helpers: helpers,
     })
 );
-
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 

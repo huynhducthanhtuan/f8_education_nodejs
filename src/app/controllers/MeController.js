@@ -4,16 +4,7 @@ const {mongooseToObject, mongoosesToObject} = require('../../util/mongoose');
 class MeController {
     // [GET] /stored/courses
     showStored(req, res, next) {
-        let courseQuery = Course.find({});
-
-        if (req.query.hasOwnProperty('_sort')) {
-            // sort courses follow field name
-            courseQuery = courseQuery.sort({
-                [req.query.column]: req.query.type,
-            });
-        }
-
-        Promise.all([courseQuery, Course.countDeleted({})])
+        Promise.all([Course.find({}).sortable(req), Course.countDeleted({})])
             .then(([courses, deletedCount]) =>
                 res.render('me/stored/courses/courses', {
                     deletedCount,

@@ -21,11 +21,26 @@ const Course = new Schema(
 // Plugin giúp auto generate slug từ field khác trong cùng document (DB)
 mongoose.plugin(slug);
 
-// Plugin giúp override những method của mongose
+// Plugin giúp override những method của mongoose
 Course.plugin(mongooseDelete, {
     deletedAt: true,
     overrideMethods: 'all',
 });
+
+// Query helper method
+Course.query.sortable = function (req) {
+    if (req.query.hasOwnProperty('_sort')) {
+        // check valid type
+        const isValidType = ['asc', 'desc'].includes(req.query.type);
+
+        // sort courses follow field name
+        return this.sort({
+            [req.query.column]: isValidType ? req.query.type : 'desc',
+        });
+    } else {
+        return this;
+    }
+};
 
 // Export 1 model Course
 module.exports = mongoose.model('Course', Course);
