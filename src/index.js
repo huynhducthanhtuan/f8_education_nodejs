@@ -17,7 +17,7 @@ app.use(morgan('combined'));
 // Template engine
 app.engine(
     'hbs',
-    handlebars({
+    handlebars.engine({
         extname: '.hbs',
         helpers: helpers,
     })

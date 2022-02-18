@@ -34,7 +34,6 @@
         "nodemon": "^2.0.15",
         "prettier": "^2.5.1"
     },
-    "devDependencies": {},
     "engines": {
         "node": "^14.15.1"
     }
