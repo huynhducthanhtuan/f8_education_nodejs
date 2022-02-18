@@ -1,1 +1,1 @@
-web:node ./src/index.js
+web:nodemon --inspect ./src/index.js
