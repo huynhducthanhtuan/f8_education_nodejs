@@ -1,7 +1,7 @@
 {
     "name": "f8_education_nodejs",
     "version": "1.0.0",
-    "description": "",
+    "description": "f8_education_nodejs",
     "main": "./src/index.js",
     "scripts": {
         "start": "nodemon --inspect ./src/index.js",
