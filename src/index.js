@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 const router = require('./routes');
 const database = require('./config/db');
 const helpers = require('./helpers/handlebars');
-const sortMiddleware = require('./app/middlewares/SortMiddleware');
+const sortMiddleware = require('./app/middlewares/sortMiddleware');
 
 // HTTP logger
 app.use(morgan('combined'));
@@ -81,4 +81,3 @@ app.listen(port, () =>
         });
 */
 //#endregion
-
