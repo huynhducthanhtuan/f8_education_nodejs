@@ -14,13 +14,16 @@ const Course = new Schema(
         slug: {type: String, slug: 'name', unique: true},
         videoId: {type: String, required: true},
         deleted: {type: Boolean, default: false},
+        createdAt: {type: Date},
+        updatedAt: {type: Date},
+        deletedAt: {type: Date},
+        __v: {type: Number},
     },
     {
         _id: false,
         timestamps: true,
     }
 );
-
 
 // Plugin giúp auto generate slug từ field khác trong cùng document (DB)
 mongoose.plugin(slug);
@@ -33,7 +36,6 @@ Course.plugin(mongooseDelete, {
 
 // Plugin giúp tự động tăng _id
 Course.plugin(AutoIncrement);
-
 
 // Query helper method
 Course.query.sortable = function (req) {

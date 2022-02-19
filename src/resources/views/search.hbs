@@ -7,12 +7,10 @@
         </div>
         <button type='submit' class='btn btn-primary'>Tìm kiếm</button>
     </form>
-</div> 
+</div>
 
-
-
-{{!-- $(event.relatedTarget), element.data('whatever') --}}
-{{!-- 
+{{! $(event.relatedTarget), element.data('whatever') }}
+{{! 
 <table class='table mt-4'>
     <thead>
         <tr>
@@ -43,7 +41,7 @@
                     href='#'
                     class='btn btn-primary'
                     data-toggle='modal'
-                    {{!-- data-target='#modal-delete-course' --}}
+                    data-target='#modal-delete-course'
                     id='delete-course-btn'
                 >Xóa</a>
             </td>
@@ -72,10 +70,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
 
 <script>
-    // Sự kiện kích hoạt sau khi DOM được tải xong, giúp dùng được JQuery
+    /* Sự kiện kích hoạt sau khi DOM được tải xong, giúp dùng được JQuery */
     document.addEventListener("DOMContentLoaded", () => {
 
         // Sự kiện kích hoạt sau khi boostrap modal này được tải vào DOM
@@ -95,4 +93,4 @@
         }); 
     });
 </script>  
-
+}}
