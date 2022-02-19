@@ -13,37 +13,42 @@ const helpers = require('./helpers/handlebars');
 const sortMiddleware = require('./app/middlewares/SortMiddleware');
 
 // HTTP logger
-app.use(morgan('combined'));
+app.use('/', (req, res) => {
+    return res.json({
+        mess: 'hello world',
+    });
+});
+// app.use(morgan('combined'));
 
-// Template engine
-app.engine(
-    'hbs',
-    handlebars.engine({
-        extname: '.hbs',
-        helpers: helpers,
-    })
-);
-app.set('view engine', '.hbs');
-app.set('views', path.join(__dirname, 'resources', 'views'));
+// // Template engine
+// app.engine(
+//     'hbs',
+//     handlebars.engine({
+//         extname: '.hbs',
+//         helpers: helpers,
+//     })
+// );
+// app.set('view engine', '.hbs');
+// app.set('views', path.join(__dirname, 'resources', 'views'));
 
-// Config static files
-app.use(express.static(path.join(__dirname, 'resources', 'public')));
+// // Config static files
+// app.use(express.static(path.join(__dirname, 'resources', 'public')));
 
-// Middleware: xử lý form HTML, JS
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
+// // Middleware: xử lý form HTML, JS
+// app.use(express.urlencoded({extended: true}));
+// app.use(express.json());
 
-// override-method expressjs
-app.use(methodOverride('_method'));
+// // override-method expressjs
+// app.use(methodOverride('_method'));
 
-// Use Middleware
-app.use(sortMiddleware);
+// // Use Middleware
+// app.use(sortMiddleware);
 
-// Routing
-router(app);
+// // Routing
+// router(app);
 
-// Connect database
-database.connect();
+// // Connect database
+// database.connect();
 
 // Listen port
 app.listen(port, () =>
