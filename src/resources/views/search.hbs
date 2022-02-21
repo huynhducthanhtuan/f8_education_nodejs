@@ -1,12 +1,23 @@
 <div class='container'>
-    <h2 class='mt-4 mb-4'>Tìm kiếm</h2>
-    <form method='get'>
-        <div class='form-group' style='width: 300px'>
-            <label>Nhập từ khóa...</label>
-            <input type='text' name='keyword' class='form-control' />
+    <div class='search-page'>
+        <div class='search-page-main'>
+            <h2 class='mt-2 mb-4'>Tìm kiếm khóa học</h2>
+            <form method='get' style='width: 380px'>
+                <div class='form-group'>
+                    <label>Nhập khóa học muốn tìm kiếm...</label>
+                    <input
+                        type='text'
+                        name='keyword'
+                        class='form-control input-custom'
+                    />
+                </div>
+                <button
+                    type='submit'
+                    class='btn btn-primary search-course-btn'
+                >Tìm kiếm</button>
+            </form>
         </div>
-        <button type='submit' class='btn btn-primary'>Tìm kiếm</button>
-    </form>
+    </div>
 </div>
 
 {{! $(event.relatedTarget), element.data('whatever') }}

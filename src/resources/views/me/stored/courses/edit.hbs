@@ -1,35 +1,51 @@
 <div class='container'>
-    <h2 class='mt-4 mb-4'>Cập nhật khoá học</h2>
-    <form
-        method='POST'
-        action='/me/stored/courses/{{course._id}}/update?_method=PUT'
-    >
-        <div class='form-group'>
-            <label for='name'>Tên</label>
-            <input class='form-control' name='name' value='{{course.name}}' />
+    <div class='edit-page'>
+        <div class='edit-page-main'>
+            <h2 class='mt-2 mb-4'>Chỉnh sửa khoá học</h2>
+            <form
+                method='POST'
+                action='/me/stored/courses/{{course._id}}/update?_method=PUT'
+                style='width: 380px;'
+            >
+                <div class='form-group'>
+                    <label for='name'>Tên</label>
+                    <input
+                        class='form-control input-custom'
+                        name='name'
+                        value='{{course.name}}'
+                    />
+                </div>
+                <div class='form-group'>
+                    <label for='description'>Mô tả</label>
+                    <input
+                        class='form-control input-custom'
+                        name='description'
+                        value='{{course.description}}'
+                    />
+                </div>
+                <div class='form-group'>
+                    <label for='image'>Đường dẫn hình ảnh</label>
+                    <input
+                        class='form-control input-custom'
+                        name='image'
+                        value='{{course.image}}'
+                    />
+                </div>
+                <div class='form-group'>
+                    <label for='videoId'>Video ID</label>
+                    <input
+                        class='form-control input-custom'
+                        name='videoId'
+                        value='{{course.videoId}}'
+                    />
+                </div>
+                <button
+                    type='submit'
+                    class='btn btn-primary edit-course-btn'
+                >CẬP NHẬT</button>
+            </form>
         </div>
-        <div class='form-group'>
-            <label for='description'>Mô tả</label>
-            <input
-                class='form-control'
-                name='description'
-                value='{{course.description}}'
-            />
-        </div>
-        <div class='form-group'>
-            <label for='image'>Đường dẫn hình ảnh</label>
-            <input class='form-control' name='image' value='{{course.image}}' />
-        </div>
-        <div class='form-group'>
-            <label for='videoId'>Video ID</label>
-            <input
-                class='form-control'
-                name='videoId'
-                value='{{course.videoId}}'
-            />
-        </div>
-        <button type='submit' class='btn btn-primary'>CẬP NHẬT</button>
-    </form>
+    </div>
 </div>
 
 <script type='text/javascript'>
