@@ -11,6 +11,7 @@ const router = require('./routes');
 const database = require('./config/db');
 const helpers = require('./helpers/handlebars');
 const sortMiddleware = require('./app/middlewares/sortMiddleware');
+const localStorage = require('./config/localStorage');
 
 // HTTP logger
 app.use(morgan('combined'));
@@ -44,6 +45,8 @@ router(app);
 
 // Connect database
 database.connect();
+
+// Get localStorage
 
 // Listen port
 app.listen(port, () =>

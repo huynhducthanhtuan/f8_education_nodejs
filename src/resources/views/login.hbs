@@ -1,12 +1,12 @@
 <div class='container'>
     <h2 class='mt-2 mb-4' style='text-align: center;'>Đăng nhập</h2>
     <div class='login-form-part'>
-        <form style='width: 380px'>
+        <form action='/' class="login-form" style='width: 380px'>
             <div class='form-group'>
                 <label>Tên đăng nhập</label>
                 <input
                     type='text'
-                    name='username'
+                    {{! name='username' }}
                     class='form-control input-custom'
                 />
             </div>
@@ -14,7 +14,7 @@
                 <label>Mật khẩu</label>
                 <input
                     type='password'
-                    name='password'
+                    {{! name='password' }}
                     class='form-control input-custom'
                 />
             </div>
@@ -26,3 +26,19 @@
 <script type='text/javascript'>
     document.title = "F8 Education | Đăng nhập";
 </script>
+
+{{!-- 
+<script type='module'>
+    var store = require("../../config/localStorage");
+
+    document.addEventListener("DOMContentLoaded", function() { 
+        var loginForm = $(".login-form");
+        var loginBtn = $(".login-btn");
+
+        loginBtn.click(function(e) { 
+            e.preventDefault();
+            store("isLoggedIn", true);
+            loginForm.submit(); 
+        });
+    });
+</script> --}}

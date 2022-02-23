@@ -1,8 +1,19 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const sitesController = require("../app/controllers/SitesController");
+const sitesController = require('../app/controllers/SitesController');
+const loginController = require('../app/controllers/LoginController');
+const store = require('../config/localStorage');
 
-router.get("/search", sitesController.search);
-router.get("/", sitesController.index);
+if (store('isLoggedIn')) {
+    router.get('/search', sitesController.search);
+    router.get('/', sitesController.index);
+} else {
+    router.get('/search', (req, res) => {
+        res.redirect('/login');
+    });
+    router.get('/', (req, res) => {
+        res.redirect('/login');
+    });
+}
 
 module.exports = router;
