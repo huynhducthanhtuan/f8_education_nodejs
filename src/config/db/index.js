@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const MONGODB_URI =
+    'mongodb+srv://zyxnone120:SAKHFWEKJWE@f8-education.i9nau.mongodb.net/f8_education_nodejs?retryWrites=true&w=majority';
 
 async function connect() {
     try {
-        mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
+        mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
         mongoose.connection.on('error', (error) => console.log(error));
         mongoose.connection.on('open', () => {
             console.log('Connected to MongoDB database.');
