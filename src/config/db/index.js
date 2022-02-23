@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// const MONGODB_URI_LOCAL = 'mongodb://localhost:27017/f8_education_nodejs';
 const MONGODB_URI =
     'mongodb+srv://zyxnone120:SAKHFWEKJWE@f8-education.i9nau.mongodb.net/f8_education_nodejs?retryWrites=true&w=majority';
 
