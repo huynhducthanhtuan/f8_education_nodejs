@@ -25,7 +25,7 @@ const Course = new Schema(
     }
 );
 
-// Plugin giúp auto generate slug từ field khác trong cùng document (DB)
+// Plugin giúp auto generate slug từ field khác trong cùng 1 document
 mongoose.plugin(slug);
 
 // Plugin giúp override những method của mongoose
