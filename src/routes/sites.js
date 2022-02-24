@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const sitesController = require('../app/controllers/SitesController');
-const loginController = require('../app/controllers/LoginController');
 const store = require('../config/localStorage');
 
 if (store('isLoggedIn')) {

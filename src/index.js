@@ -82,5 +82,14 @@ app.listen(port, () =>
             console.log(req.body);
             res.render('login');
         });
+
+    4. Query data
+        // Course.findOne({name: 'ReactJS'}) -> promise
+        // Course.findById('61893af06253e1c22842f97f') -> promise
+
+    5. Phản hồi về json
+        // res.json({course: 1, index: 1});
+        // res.send({course: 2, index: 2});
+        //#endregion
 */
 //#endregion

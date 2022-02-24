@@ -1,5 +1,6 @@
 const Course = require('../models/Course');
 const {mongoosesToObject} = require('../../util/mongoose.js');
+const store = require('../../config/localStorage');
 
 function SitesController() {
     // [GET] /
@@ -11,15 +12,6 @@ function SitesController() {
                 });
             })
             .catch((error) => next(error));
-
-        //#region Notes
-        // Course.findOne({name: 'ReactJS'}) -> promise
-        // Course.findById('61893af06253e1c22842f97f') -> promise
-
-        // Phản hồi về json
-        // res.json({course: 1, index: 1});
-        // res.send({course: 2, index: 2});
-        //#endregion
     };
 
     // [GET] /search

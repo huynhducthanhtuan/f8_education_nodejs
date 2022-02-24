@@ -1,7 +1,7 @@
 <div class='container'>
     <h2 class='mt-2 mb-4' style='text-align: center;'>Đăng nhập</h2>
     <div class='login-form-part'>
-        <form action='/' class="login-form" style='width: 380px'>
+        <form action='/' class='login-form' style='width: 380px'>
             <div class='form-group'>
                 <label>Tên đăng nhập</label>
                 <input
@@ -27,18 +27,15 @@
     document.title = "F8 Education | Đăng nhập";
 </script>
 
-{{!-- 
-<script type='module'>
-    var store = require("../../config/localStorage");
-
-    document.addEventListener("DOMContentLoaded", function() { 
-        var loginForm = $(".login-form");
-        var loginBtn = $(".login-btn");
-
+{{! <script type='text-javascript'>
+    var store = require('../../config/localStorage');
+    document.addEventListener('DOMContentLoaded', function () { 
+        var loginForm = $('.login-form'); 
+        var loginBtn = $('.login-btn'); 
         loginBtn.click(function(e) { 
-            e.preventDefault();
-            store("isLoggedIn", true);
+            e.preventDefault(); 
+            store('isLoggedIn', true); 
             loginForm.submit(); 
         });
-    });
-</script> --}}
+    }); 
+</script> }}
