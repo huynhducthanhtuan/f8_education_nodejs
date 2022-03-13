@@ -1,6 +1,5 @@
 const Course = require('../models/Course');
 const {mongoosesToObject} = require('../../util/mongoose.js');
-const store = require('../../config/localStorage');
 
 function SitesController() {
     // [GET] /

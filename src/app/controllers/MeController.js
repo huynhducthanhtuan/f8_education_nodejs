@@ -4,10 +4,7 @@ const {mongooseToObject, mongoosesToObject} = require('../../util/mongoose');
 class MeController {
     // [GET] /stored/courses
     showStored(req, res, next) {
-        Promise.all([
-            Course.find({}).sortable(req), 
-            Course.countDeleted({})
-        ])
+        Promise.all([Course.find({}).sortable(req), Course.countDeleted({})])
             .then(([courses, deletedCoursesCount]) =>
                 res.render('me/stored/courses/courses', {
                     deletedCoursesCount,
@@ -44,10 +41,7 @@ class MeController {
 
     // [GET] /trash/courses
     showTrash(req, res, next) {
-        Promise.all([
-            Course.findDeleted({}).sortable(req),
-            Course.count({})
-        ])
+        Promise.all([Course.findDeleted({}).sortable(req), Course.count({})])
             .then(([courses, availableCoursesCount]) =>
                 res.render('me/trash/courses/courses', {
                     availableCoursesCount,

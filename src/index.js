@@ -1,4 +1,3 @@
-// Import libraries
 const express = require('express');
 const app = express();
 require('dotenv').config();
@@ -11,7 +10,6 @@ const router = require('./routes');
 const database = require('./config/db');
 const helpers = require('./helpers/handlebars');
 const sortMiddleware = require('./app/middlewares/sortMiddleware');
-const localStorage = require('./config/localStorage');
 
 // HTTP logger
 app.use(morgan('combined'));
@@ -37,7 +35,7 @@ app.use(express.json());
 // override-method expressjs
 app.use(methodOverride('_method'));
 
-// Use Middleware
+// sortMiddleware
 app.use(sortMiddleware);
 
 // Routing
@@ -46,50 +44,7 @@ router(app);
 // Connect database
 database.connect();
 
-// Get localStorage
-
 // Listen port
 app.listen(port, () =>
     console.log('App is listening at http://localhost:' + port)
 );
-
-//#region Notes
-/*
-    1. Nodemon: lắng nghe sự thay đổi file và debug
-
-    2a. Query parameters
-        + Syntax: `url?key=value&key=value`
-        + Đính lên URL những cặp key=value
-            .key: value của attribute name của thẻ input)
-            .value: value của ô input đó
-        + Header object: Query String Parameters
-        + Get data: => req.query
-
-    2b. Form Data
-        + Lưu dữ liệu khi submit form, ko đính lên URL (khi form có method: post)
-        + Header object: Form Data
-        + Get data: => req.body
-
-    3. Routing
-        app.get('/', (req, res) => res.render('home'));
-        app.post('/', (req, res) => {
-            console.log(req.body);
-            res.render('home');
-        });
-
-        app.get('/login', (req, res) => res.render('login'));
-        app.post('/login', (req, res) => {
-            console.log(req.body);
-            res.render('login');
-        });
-
-    4. Query data
-        // Course.findOne({name: 'ReactJS'}) -> promise
-        // Course.findById('61893af06253e1c22842f97f') -> promise
-
-    5. Phản hồi về json
-        // res.json({course: 1, index: 1});
-        // res.send({course: 2, index: 2});
-        //#endregion
-*/
-//#endregion
