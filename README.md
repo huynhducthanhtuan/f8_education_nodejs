@@ -1,7 +1,7 @@
 ## F8 Education
 
-### Technologies: NodeJS & ExpressJS
-### Version 1.0: 22/11/2021
+#### Technologies: NodeJS & ExpressJS
+#### Version 1.0: 22/11/2021
 
 ### Cách clone dự án về máy
 
