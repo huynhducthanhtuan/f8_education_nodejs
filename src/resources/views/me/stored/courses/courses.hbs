@@ -72,14 +72,14 @@
                     <td>{{this.name}}</td>
                     <td>{{this.slug}}</td>
                     <td>{{this.createdAt}}</td>
-                    <td>
+                    <td style="display: flex">
                         <a
                             href='/me/stored/courses/{{this._id}}/edit'
                             class='btn btn-primary'
                         >Sửa</a>
                         <a
                             href='#'
-                            class='btn btn-primary'
+                            class='btn btn-danger'
                             data-toggle='modal'
                             data-target='#modal-delete-course'
                             id='delete-course-btn'
