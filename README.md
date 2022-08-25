@@ -2,9 +2,9 @@
 
 ### Version 1.0.0: 25/08/2022
 
-### Start date: 29/10/2021
+#### Start date: 29/10/2021
 
-### End date: 25/08/2022
+#### End date: 25/08/2022
 
 ### Cách clone dự án về máy
 
