@@ -1,23 +1,36 @@
-## F8 Education
+## F8 Education NodeJS
 
-### Version 1.0.0: 25/08/2022
+### Version 1.0.0: 25-08-2022
 
-#### Start date: 29/10/2021
+### Production Links
 
-#### End date: 25/08/2022
+https://f8-education-hdttuan.onrender.com/
+https://f8-education-nodejs.herokuapp.com/
 
-### Cách clone dự án về máy
+### Installation Guide
 
-#### 1. Trên máy, vào thư mục muốn clone về, mở CMD
+#### 1. Clone project
 
-#### 2. Gõ lệnh "git clone https://github.com/huynhdthanhtuan/f8_education_nodejs.git"
+```bash
+$ git clone https://github.com/huynhdthanhtuan/f8_education_nodejs.git
+```
 
-### Cách chạy dự án
+#### 2. Change directory to folder f8_education_nodejs
 
-#### 1. Tại thư mục gốc đã clone về trước đó (f8_education_nodejs), mở CMD
+```bash
+$ cd f8_education_nodejs
+```
 
-#### 2. Gõ lệnh "npm install"
+#### 3. Install dependencies
 
-#### 3. Gõ lệnh "npm start"
+```bash
+$ npm install
+```
 
-#### 4. Ctrl+Click vào đường dẫn "http://localhost:5000/" ở cửa sổ Terminal
+#### 4. Run in developement mode
+
+```bash
+$ npm start
+```
+
+#### 5. Ctrl + Click on path "http://localhost:5000" in Terminal log
