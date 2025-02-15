@@ -40,5 +40,8 @@ router(app);
 database.connect();
 
 app.listen(PORT, () =>
-    console.log('App is listening at http://localhost:' + PORT)
+    {
+        var server = `http://localhost:${PORT}`;
+        console.log(`App is listening at ${server}`);
+    }
 );
