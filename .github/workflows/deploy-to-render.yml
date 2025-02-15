@@ -6,17 +6,12 @@ on:
       - master
 
 jobs:
-  create-env-file:
+  deploy-to-render:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-
-      - name: Create .env file
-        run: |
-          echo "PORT=${{ secrets.PORT }}" >> .env
-          echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> .env
 
       - name: Deploy project to Render
         uses: JorgeLNJunior/render-deploy@v1.4.4
