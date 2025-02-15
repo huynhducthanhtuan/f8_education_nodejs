@@ -8,6 +8,7 @@ const router = require('./routes');
 const database = require('./config/db');
 const helpers = require('./helpers/handlebars');
 const sortMiddleware = require('./app/middlewares/sortMiddleware');
+const { exec } = require('child_process');
 
 const app = express();
 require('dotenv').config();
@@ -39,6 +40,10 @@ router(app);
 
 database.connect();
 
-app.listen(PORT, () =>
-    console.log('App is listening at http://localhost:' + PORT)
+app.listen(PORT, async() =>
+    {
+        var server = `http://localhost:${PORT}`;
+        console.log(`App is listening at ${server}`);
+        exec(`start ${server}`);
+    }
 );
